@@ -2,7 +2,7 @@
 #include <PubSubClient.h>
 #include "DHT.h"
 
-#define DHTPIN 5
+#define DHTPIN 4
 #define DHTTYPE DHT11
 
 const char* ssid = "Bigode";
