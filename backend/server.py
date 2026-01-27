@@ -66,6 +66,8 @@ def ao_receber_mensagem(client, userdata, msg):
 
         temperatura = float(dados["temperatura"])
         umidade = float(dados["umidade"])
+        alerta = dados.get("alerta", False)
+
 
         # Salva no banco
         leitura = DHT11Leitura(
@@ -81,8 +83,10 @@ def ao_receber_mensagem(client, userdata, msg):
         # Envia para frontend
         socketio.emit("atualizacao_dados", {
             "temperatura": temperatura,
-            "umidade": umidade
+            "umidade": umidade,
+            "alerta": alerta
         })
+
         socketio.emit("log_mensagem", {
             "mensagem": log_texto
         })

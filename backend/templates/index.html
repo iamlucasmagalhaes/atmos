@@ -1,93 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Monitor DHT11 - IoT</title>
+  <meta charset="UTF-8">
+  <title>Therma32 - Monitoramento Inteligente</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 20px;
+      text-align: center;
+    }
 
-    <!-- Socket.IO -->
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-    <script src="/static/script.js" defer></script>
+    .card {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
 
-    <style>
-        body {
-            background: #f0f4f8;
-        }
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
 
-        .painel {
-            max-width: 550px;
-        }
+    .normal {
+      background: #064e3b;
+      color: #d1fae5;
+    }
 
-        .card-custom {
-            border-radius: 18px;
-            padding: 25px;
-        }
+    .alerta {
+      background: #7f1d1d;
+      color: #fee2e2;
+    }
 
-        .valor {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
+    .temp {
+      font-size: 2.2rem;
+      margin: 15px 0;
+    }
 
-        .temp { color: #d32f2f; }
-        .umid { color: #00796b; }
-
-        #logs {
-            background: #1e1e1e;
-            color: #e0e0e0;
-            height: 200px;
-            overflow-y: auto;
-            border-radius: 10px;
-            padding: 10px;
-            font-family: Consolas, monospace;
-            font-size: 0.9rem;
-        }
-    </style>
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
 </head>
+<body>
 
-<body class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card">
+    <h1>🌡️ Therma32</h1>
+    <p>Sistema Inteligente de Monitoramento Térmico</p>
 
-    <div class="container painel">
-        <h2 class="text-center mb-4 fw-semibold text-primary">
-            <i class="bi bi-thermometer-half"></i>
-            Monitor IoT – Temperatura e Umidade
-        </h2>
-
-        <div class="row g-4">
-
-            <!-- Card Temperatura -->
-            <div class="col-md-6">
-                <div class="card shadow-sm card-custom text-center">
-                    <h5 class="mb-2">Temperatura</h5>
-                    <i class="bi bi-thermometer-high fs-1 text-danger"></i>
-                    <div id="temp" class="valor temp mt-2">-- °C</div>
-                </div>
-            </div>
-
-            <!-- Card Umidade -->
-            <div class="col-md-6">
-                <div class="card shadow-sm card-custom text-center">
-                    <h5 class="mb-2">Umidade</h5>
-                    <i class="bi bi-water fs-1 text-info"></i>
-                    <div id="umid" class="valor umid mt-2">-- %</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Painel de Logs -->
-        <div class="mt-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="fw-semibold">Logs</h5>
-                    <pre id="logs"></pre>
-                </div>
-            </div>
-        </div>
-
+    <div class="temp">
+      <span id="tempAtual">--</span> °C
     </div>
+
+    <div id="status" class="status normal">
+      STATUS: NORMAL
+    </div>
+
+    <canvas id="graficoTemperatura"></canvas>
+  </div>
+
+  <script>
+    const tempAtual = document.getElementById("tempAtual");
+    const statusDiv = document.getElementById("status");
+    const ctx = document.getElementById("graficoTemperatura");
+
+    const labels = [];
+    const dados = [];
+
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Temperatura (°C)",
+          data: dados,
+          borderWidth: 2,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+
+    // Histórico inicial
+    fetch("/api/leituras?limit=20")
+      .then(res => res.json())
+      .then(data => {
+        data.reverse().forEach(l => {
+          labels.push(new Date(l.timestamp).toLocaleTimeString());
+          dados.push(l.temperatura);
+        });
+        chart.update();
+      });
+
+    // Socket.IO
+    const socket = io();
+
+    socket.on("atualizacao_dados", payload => {
+      const hora = new Date().toLocaleTimeString();
+
+      tempAtual.textContent = payload.temperatura;
+
+      labels.push(hora);
+      dados.push(payload.temperatura);
+
+      if (labels.length > 20) {
+        labels.shift();
+        dados.shift();
+      }
+
+      if (payload.alerta) {
+        statusDiv.textContent = "STATUS: ALERTA";
+        statusDiv.className = "status alerta";
+      } else {
+        statusDiv.textContent = "STATUS: NORMAL";
+        statusDiv.className = "status normal";
+      }
+
+      chart.update();
+    });
+  </script>
+
 </body>
 </html>
