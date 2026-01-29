@@ -3,3 +3,4 @@
 *.log
 mosquitto/data/
 mosquitto/log/
+.platformio/
