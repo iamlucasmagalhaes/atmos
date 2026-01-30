@@ -1,4 +1,4 @@
-# 🚀 [Therma32]
+# 🚀 [Atmos]
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ## 📝 Descrição
