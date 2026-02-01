@@ -1,6 +1,9 @@
 ![Logo Atmos - ESP32 ThermoHydro](./assets/Gemini_Generated_Image_6iz09w6iz09w6iz0-Photoroom.png)
 
-![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
+
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 
 ## 📝 Descrição
 [Escreva aqui um breve resumo do que o projeto faz. Exemplo: Um sistema de monitoramento de temperatura e umidade via WiFi usando ESP32 e MQTT.]
