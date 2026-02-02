@@ -11,8 +11,18 @@
 
 </div>
 
-## 📝 Descrição
-[Escreva aqui um breve resumo do que o projeto faz. Exemplo: Um sistema de monitoramento de temperatura e umidade via WiFi usando ESP32 e MQTT.]
+## Sobre o Atmos
+O Atmos é uma solução de monitoramento IoT com arquitetura modular e eficiente. Acreditamos que o desenvolvimento de hardware conectado deve ser uma experiência fluida e intuitiva para ser verdadeiramente inovadora. O Atmos elimina a complexidade do desenvolvimento embarcado, abstraindo tarefas repetitivas encontradas na maioria dos projetos de IoT, como:
+
+- Gerenciamento de conexão WiFi autônomo com reconexão automática.
+- Abstração para sensores de temperatura e umidade com filtragem de ruído.
+- Estrutura não-bloqueante baseada nas capacidades dual-core do ESP32.
+- Tratamento otimizado de JSON para telemetria em tempo real.
+- Suporte descomplicado para protocolos MQTT e APIs REST.
+- Gerenciamento inteligente de energia e modos de suspensão.
+- Sistema de logs claros para depuração e manutenção rápida.
+
+O Atmos é acessível para prototipagem rápida, mas poderoso o suficiente para fornecer a estabilidade necessária em aplicações de monitoramento contínuo e robusto.
 
 ## ✨ Funcionalidades
 * [Funcionalidade 1: Ex: Leitura de sensores em tempo real]
