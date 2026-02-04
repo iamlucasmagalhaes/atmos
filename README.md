@@ -31,7 +31,3 @@ O Atmos é ideal para prototipagem rápida, mas também fornece uma base sólida
 O sistema disponibiliza uma API REST para consulta de histórico:
  - /api/leituras
  - /api/leituras?limit=20
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.gi
