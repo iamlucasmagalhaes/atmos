@@ -27,38 +27,11 @@ O Atmos abstrai e automatiza diversas tarefas recorrentes em aplicações de mon
 
 O Atmos é ideal para prototipagem rápida, mas também fornece uma base sólida para aplicações de monitoramento contínuo, permitindo evolução incremental do firmware, do backend e do frontend de forma independente.
 
-## ✨ Funcionalidades
-* [Funcionalidade 1: Ex: Leitura de sensores em tempo real]
-* [Funcionalidade 2: Ex: Conexão automática ao WiFi]
-* [Funcionalidade 3: Ex: Painel de controle Web]
-
-## 🛠️ Hardware Necessário
-* 1x Placa de Desenvolvimento ESP32 (Ex: ESP32 DOIT DEVKIT V1)
-* [Sensor 1: Ex: DHT11 ou DHT22]
-* [Outros componentes: Ex: Relé 5V, LEDs, Resistores]
-* Jumpers e Protoboard
-* Cabo Micro-USB
-
-## 🔌 Esquema de Ligação (Pinout)
-
-| Componente | Pino do Componente | Pino do ESP32 (GPIO) |
-| :--- | :--- | :--- |
-| DHT22 | DATA | D4 (GPIO 4) |
-| DHT22 | VCC | 3.3V |
-| DHT22 | GND | GND |
-| Relé | IN | D5 (GPIO 5) |
-
-## 💻 Software e Bibliotecas
-Este projeto foi desenvolvido utilizando a IDE [Arduino IDE / PlatformIO / ESP-IDF].
-
-Bibliotecas necessárias (instale via Gerenciador de Bibliotecas):
-* `WiFi.h` (Nativa)
-* `PubSubClient` (para MQTT)
-* `Adafruit Unified Sensor`
-* `[Nome de outra biblioteca usada]`
-
-## ⚙️ Configuração e Instalação
+## API Endpoints
+O sistema disponibiliza uma API REST para consulta de histórico:
+ - /api/leituras
+ - /api/leituras?limit=20
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.git)
+   git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.gi
