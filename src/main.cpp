@@ -51,7 +51,8 @@ void setup() {
   Serial.begin(115200);
   dht.begin();
 
-  pinMode(BUZZER_PIN, OUTPUT);
+  // Decisão local
+  pinMode(BUZZER_PIN, OUTPUT);  
   digitalWrite(BUZZER_PIN, LOW);
 
   conectarWiFi();
