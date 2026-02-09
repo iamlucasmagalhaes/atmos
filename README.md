@@ -12,22 +12,30 @@
 </div>
 
 ## Sobre o Atmos
-O Atmos é uma solução de monitoramento IoT baseada em uma arquitetura modular, focada em processamento em Edge, comunicação em tempo real e fácil integração com aplicações web. O projeto foi concebido para tornar o desenvolvimento de sistemas IoT mais simples, confiável e escalável, reduzindo a complexidade comum em projetos embarcados.
+O **Atmos** é uma solução de monitoramento IoT com uma arquitetura modular e resiliente. Acreditamos que o desenvolvimento de sistemas embarcados deve ser escalável, confiável e livre da complexidade excessiva. O Atmos abstrai as dificuldades comuns de projetos de hardware, permitindo que você foque na inteligência dos dados.
 
-O Atmos abstrai e automatiza diversas tarefas recorrentes em aplicações de monitoramento IoT, como:
+O Atmos facilita tarefas críticas usadas em aplicações modernas de IoT, como:
 
-- Comunicação confiável entre dispositivos IoT e backend utilizando MQTT, com tratamento de reconexão no backend.
-- Processamento em Edge no ESP32, incluindo filtragem de ruído dos dados de temperatura por meio de média móvel.
-- Execução de decisões locais em tempo real, como a ativação de alertas físicos baseados em limites configuráveis.
-- Envio de telemetria em JSON compacto, otimizado para comunicação em tempo real.0
-- Integração transparente com APIs REST para consulta de dados históricos.
-- Disponibilização dos dados em tempo real via WebSockets, permitindo atualização imediata no frontend.
-- Persistência das leituras em banco de dados relacional com registro temporal.
-- Sistema de logs de execução e erro no backend, facilitando a depuração e o monitoramento da aplicação.
+- Comunicação robusta device-to-backend via MQTT com reconexão automática.
+- Processamento inteligente na borda (Edge Computing) com filtragem de ruído.
+- Execução de decisões locais em tempo real com latência zero.
+- Telemetria otimizada com payloads JSON compactos.
+- Integração fluida com APIs REST para dados históricos.
+- Transmissão de dados em tempo real via WebSockets.
+- Logs detalhados de execução e erro para depuração simplificada.
 
-O Atmos é ideal para prototipagem rápida, mas também fornece uma base sólida para aplicações de monitoramento contínuo, permitindo evolução incremental do firmware, do backend e do frontend de forma independente.
+O Atmos é acessível para prototipagem rápida, mas poderoso o suficiente para sustentar aplicações de monitoramento contínuo em produção.
 
-## API Endpoints
-O sistema disponibiliza uma API REST para consulta de histórico:
- - /api/leituras
- - /api/leituras?limit=20
+## Utilizando o Atmos
+
+O Atmos foi projetado para ser intuitivo. Embora a documentação completa esteja sendo construída, o sistema já fornece interfaces claras para integração imediata.
+
+### API Endpoints
+Para desenvolvedores que desejam consumir os dados históricos, o sistema disponibiliza uma API REST expressiva e simples:
+
+- `GET /api/leituras` — Recupera o histórico completo.
+- `GET /api/leituras?limit=20` — Recupera as leituras mais recentes.
+
+Se você não quer apenas ler documentação, pode explorar o código fonte para ver como implementamos a filtragem de média móvel no ESP32 e a arquitetura de eventos no backend.
+
+
