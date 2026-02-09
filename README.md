@@ -27,7 +27,6 @@ O Atmos facilita tarefas críticas usadas em aplicações modernas de IoT, como:
 O Atmos é acessível para prototipagem rápida, mas poderoso o suficiente para sustentar aplicações de monitoramento contínuo em produção.
 
 ## Utilizando o Atmos
-
 O Atmos foi projetado para ser intuitivo. Embora a documentação completa esteja sendo construída, o sistema já fornece interfaces claras para integração imediata.
 
 ### API Endpoints
@@ -37,5 +36,13 @@ Para desenvolvedores que desejam consumir os dados históricos, o sistema dispon
 - `GET /api/leituras?limit=20` — Recupera as leituras mais recentes.
 
 Se você não quer apenas ler documentação, pode explorar o código fonte para ver como implementamos a filtragem de média móvel no ESP32 e a arquitetura de eventos no backend.
+
+## Hardware & Stack
+Gostaríamos de destacar as tecnologias que tornam o Atmos possível. O projeto é construído sobre ombros de gigantes para garantir performance e estabilidade:
+
+- **Hardware:** ESP32 (Dual Core)
+- **Firmware:** C++ / Arduino Framework
+- **Protocolos:** MQTT & HTTP/REST
+- **Database:** Relacional (SQL)
 
 
