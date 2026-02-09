@@ -45,4 +45,5 @@ Gostaríamos de destacar as tecnologias que tornam o Atmos possível. O projeto 
 - **Protocolos:** MQTT & HTTP/REST
 - **Database:** Relacional (SQL)
 
-
+## Licença
+O framework Atmos é um software open-source licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
