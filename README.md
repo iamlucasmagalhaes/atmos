@@ -11,7 +11,7 @@
 
 </div>
 
-## Sobr o Atmos
+## Sobre o Atmos
 O **Atmos** é uma solução de monitoramento IoT com uma arquitetura modular e resiliente. Acreditamos que o desenvolvimento de sistemas embarcados deve ser escalável, confiável e livre da complexidade excessiva. O Atmos abstrai as dificuldades comuns de projetos de hardware, permitindo que você foque na inteligência dos dados.
 
 O Atmos facilita tarefas críticas usadas em aplicações modernas de IoT, como:
